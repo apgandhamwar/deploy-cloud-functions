@@ -4,7 +4,7 @@ on:
   workflow_dispatch
 
 jobs:
-  secret:
+  cloud-function:
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate to Google Cloud
