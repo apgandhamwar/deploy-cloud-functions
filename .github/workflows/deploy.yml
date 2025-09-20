@@ -15,7 +15,11 @@ jobs:
         uses: 'google-github-actions/deploy-cloud-functions@v4'
         timeout-minutes: 10
         with:
-          name: 'my-function'
+          name: 'my-cloud-run-function'
           runtime: 'nodejs22'
+          source_dir: '.'
+          entry_point: 'myHttpFunction'
+          project_id: 'your-gcp-project-id'
+          region: 'us-central1'
       - id: 'test'
         run: 'curl "${{ steps.deploy.outputs.url }}"'
