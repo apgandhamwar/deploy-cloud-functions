@@ -1,0 +1,21 @@
+name: deploy-cloud-functions
+
+on:
+  workflow_dispatch
+
+jobs:
+  secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.google_credentials }}
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-cloud-functions@v4'
+      timeout-minutes: 10
+      with:
+        name: 'my-function'
+        runtime: 'nodejs22'
+    - id: 'test'
+      run: 'curl "${{ steps.deploy.outputs.url }}"'
