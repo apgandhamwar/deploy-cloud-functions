@@ -19,7 +19,7 @@ jobs:
           runtime: 'nodejs22'
           source_dir: '.'
           entry_point: 'myHttpFunction'
-          project_id: 'your-gcp-project-id'
+          project_id: 'ardent-case-465107-c9'
           region: 'us-central1'
       - id: 'test'
         run: 'curl "${{ steps.deploy.outputs.url }}"'
